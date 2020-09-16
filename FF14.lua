@@ -46,7 +46,8 @@ maker_list={
 	["3star_480_semi"]={"xj","xd","jinx","zw","xd","cj","jy2","pl","pl","gg","xd","xd","kb","zf","mf","zz"};
 	["3star_16_step"]={"xj","zw","cj","jy2","pl","pl","pl","xd","xd","kb","gg","xd","xd","kb","zf","mf"};
 	["3star_15_step_with_1k"]={"xj","zw","cj","jy2","pl","pl","pl","xd","xd","gg","xd","xd","kb","zf","mf"};
-	["Tiangang_Step1"]={"xj","zw","gg","xd","xd","zf","pl","pl","mf"};
+	["tiangang_step1"]={"xj","zw","gg","xd","xd","zf","cj","pl","pl"};
+	["tiangang_step2"]={"xj","zw","cj","jy2","pl","pl","xd","gg","xd","xd","xd","zf","jm"};
 }
 maker_table=maker_list[maker_name];
 controller_name="collect_uper";

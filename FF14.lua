@@ -1,6 +1,6 @@
 state=false;
 open=false;
-mode=16;
+mode=4;
 --mode=1 抢房mode
 --mode=2 疯狂按Insert的mode
 --mode=3 演奏mode 
@@ -14,7 +14,7 @@ mode=16;
 --mode=14 巧手之主指环自动兑换-分解系统
 --mode=15 收藏品自动制造-兑换系统
 times=90;
-maker_name="70_NQ"
+maker_name="3star_semi"
 repair=true;
 repair_times=150;
 is_collect=false;
@@ -56,6 +56,7 @@ maker_list={
 	["3star_16_step"]={"xj","zw","cj","jy2","pl","pl","pl","xd","xd","kb","gg","xd","xd","kb","zf","mf"};
 	["3star_15_step_with_1k"]={"xj","zw","cj","jy2","pl","pl","pl","xd","xd","gg","xd","xd","kb","zf","mf"};
 	["3star_490HQ_From2k_yibei"]={"xj","zw","cj","jy2","pl","pl","pl","xd","jm","gg","xd","xd","gc","zsjg","kb","gg","gc","zsjg","kb","zf","gc","zszz"};
+	["3star_semi"]={"jx","cj","pl","mf"};
 	["tiangang_step1"]={"xj","zw","gg","xd","xd","zf","cj","pl","pl"};
 	["tiangang_step2"]={"xj","zw","cj","jy2","pl","pl","xd","gg","xd","xd","xd","zf","jm"};
 }

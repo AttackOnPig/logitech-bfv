@@ -1,6 +1,6 @@
 state=false;
 open=false;
-mode=4;
+mode=16;
 --mode=1 抢房mode
 --mode=2 疯狂按Insert的mode
 --mode=3 演奏mode 
@@ -33,6 +33,12 @@ mode15_config={
 	collect_name="up_mojiang";
 	collect_uper="collect_uper";
 }
+mode16_config = {
+	times = 5,
+	buy_name="get_cuichengsha",
+	collect_name="up_mojiang_2",
+	collect_uper="collect_quick_uper",
+}
 maker_list={
 	["hong"]={{"lalt","1",37000},{"lalt","2",37000}};
 	["hong_2"]={{"lalt","q",35000},{"lalt","e",32000}};
@@ -49,7 +55,7 @@ maker_list={
 	["3star_480_semi"]={"xj","xd","jinx","zw","xd","cj","jy2","pl","pl","gg","xd","xd","kb","zf","mf","zz"};
 	["3star_16_step"]={"xj","zw","cj","jy2","pl","pl","pl","xd","xd","kb","gg","xd","xd","kb","zf","mf"};
 	["3star_15_step_with_1k"]={"xj","zw","cj","jy2","pl","pl","pl","xd","xd","gg","xd","xd","kb","zf","mf"};
-	["3star_490HQ_From2k_yibei"]={"xj","zw","cj","jy2","pl","pl","pl","xd","jm","gg","xd","xd","gc","zsjg","kb","gg","gc","zsjg","kb","zf","gc","zszz";
+	["3star_490HQ_From2k_yibei"]={"xj","zw","cj","jy2","pl","pl","pl","xd","jm","gg","xd","xd","gc","zsjg","kb","gg","gc","zsjg","kb","zf","gc","zszz"};
 	["tiangang_step1"]={"xj","zw","gg","xd","xd","zf","cj","pl","pl"};
 	["tiangang_step2"]={"xj","zw","cj","jy2","pl","pl","xd","gg","xd","xd","xd","zf","jm"};
 }
@@ -68,6 +74,9 @@ controller_list={
 	["repair"]={{"right",200},{"insert",200},{"left",200},{"insert",200}};
 	["get_selled_food"]={{"insert",600},{"insert",600},{"up",300},{"up",300},{"up",300},{"up",300},{"insert",400},{"right",300},{"insert",300},{"down",300},{"insert",300},{"left",300},{"insert",300},{"left",300},{"insert",300},{"insert",300},{"left",300},{"insert",300}};
 	["up_mojiang"]={{"insert",1000},{"down",300},{"down",300}};
+	["collect_quick_uper"] = {{"insert",200},{"insert",200},{"insert",200},};
+	["up_mojiang_2"]={{"insert",400},{"insert",400},{"insert",400},{"down",200},{"down",200},{"down",200},{"down",200},{"down",200},{"down",200},};
+	["get_cuichengsha"]={{"insert",400},{"insert",400},{"down",200},{"down",200},{"down",200},{"down",200},{"down",200},{"insert",1000},{"up",300},{"up",300},{"right",300},{"insert",300},{"down",300},{"insert",300},{"left",300},{"insert",300},{"left",300},{"insert",300},};
 }
 
 controller_table=controller_list[controller_name];
@@ -202,6 +211,10 @@ function OnEvent(event, arg)
 			maker_table=maker_list[maker_name];
 			destroy_flag=1;
 			SetMKeyState(3);
+		elseif (mode==16) then
+			number=1;
+			destroy_flag=1;
+			SetMKeyState(3);
 		else
 			number=-1;
 			SetMKeyState(3);
@@ -226,6 +239,8 @@ function OnEvent(event, arg)
 			AutoBuyAndDestroy();
 		elseif (mode==15) then
 			AutoMakeAndUpAndBuyFood();
+		elseif (mode==16) then
+			AutoUpAndBuyFood()
 		end
 		SetMKeyState(3);
     end
@@ -233,6 +248,49 @@ end
 function push_mouse()
 	PressAndReleaseMouseButton(1);
 	Sleep(150);
+end
+function AutoUpAndBuyFood()
+	if (destroy_flag==1) then	--生产指定产品
+		destroy_flag=2
+		Sleep(1000);
+		PressWithKey(alt,"1",100);
+		Sleep(1000);
+		number=1
+		controller_name=mode16_config.collect_name;
+		controller_table=controller_list[controller_name];
+	elseif (destroy_flag==2) then	--进入魔匠兑换处
+		controller();
+		if (open==false) then
+			open=true;
+			number=mode15_config.times;
+			controller_name=mode16_config.collect_uper;
+			controller_table=controller_list[controller_name];
+			destroy_flag=3;
+		end
+	elseif (destroy_flag==3) then	--兑换指定次数
+		controller();
+		if (open==false) then
+			open=true;
+			Sleep(500);
+			PressAndReleaseKey("escape");
+			Sleep(500);
+			PressWithKey(alt,"2",100);
+			Sleep(500);
+			controller_name=mode16_config.buy_name;
+			controller_table=controller_list[controller_name];
+			destroy_flag=4;
+			number=1;
+		end
+	elseif (destroy_flag==4) then	
+		controller();
+		if (open==false) then
+			open=true;
+			Sleep(500);
+			PressAndReleaseKey("f1");
+			Sleep(500);
+			destroy_flag=1;
+		end
+	end
 end
 function AutoMakeAndUpAndBuyFood()
 	if (destroy_flag==1) then	--生产指定产品

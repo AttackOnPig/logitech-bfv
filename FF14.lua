@@ -113,8 +113,8 @@ skill_table={
 	["nj"]={ctrl,"2",st};	--内静
 	["jinx"]={shift,"r",lt};--精修
 	["jy2"]={shift,"e",st};	--俭约2
-	["zszz"]={ctrl,"z",lt};	--注视制作
-	["zsjg"]={ctrl,"x",lt};	--注视加工
+	["zszz"]={nil,"z",lt};	--注视制作
+	["zsjg"]={nil,"x",lt};	--注视加工
 	["mj"]={ctrl,"c",lt};	--秘诀
 
 	["jg"]={ctrl,"4",lt};	--加工

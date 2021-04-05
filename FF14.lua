@@ -48,7 +48,7 @@ maker_list={
 	["76_hq_Quick"]={"jm","jm","jm"};
  	["77_hq_2000"]={"xj","jm","jm","jm","jm","jm"};
 	["77_hq"]={"xj","jm","jm","jm","jm","xd","jm"};
-	["80_hq"]={"xj","gg","jm","jm","jm","jm","jm","jm"};
+	["80_hq"]={"xj","gg","jm","jm","jm","jm","jm","mf"};
 	["2star_semi"]={"jx","cj","pl"};
 	["2star_14_step"]={"xj","zw","cj","jy2","pl","pl","xd","xd","gg","xd","xd","kb","zf","pl"};
 	["3star_semi"]={"jx","cj","pl","mf"};
@@ -60,6 +60,11 @@ maker_list={
 	["3star_semi"]={"jx","cj","pl","mf"};
 	["tiangang_step1"]={"xj","zw","gg","xd","xd","zf","cj","pl","pl"};
 	["tiangang_step2"]={"xj","zw","cj","jy2","pl","pl","xd","gg","xd","xd","xd","zf","jm"};
+	-- 制作510HQ均需要吃辣椒炒全蟹
+	["510HQ_SEMI_85HQ"] = {"jx","zw","nj","cj","pl","zz","gg","jyjg","jyjg","jyjg","jyjg","zw","gg","jyjg","jyjg","jyjg","jyjg","kb","gg","xd","kb","zf","zz"};
+	-- 这两个还要吃魔匠HQ
+	["510HQ_PRO_NEED_2400"] = {"jx","nj","zw","cj","jy","pl","pl","jm","xd","gg","jyjg","jyjg","jyjg","jyjg","gg","jyjg","jyjg","zs","zsjg","kb","zf","gc","zszz"};
+	["510HQ_NOT_PRO_NEED_6600"] = {"jx","nj","zw","cj","jy2","pl","pl","jm","gg","xd","xd","xd","xd","kb","gg","xd","kb","zf","gc","zszz"};
 }
 maker_table=maker_list[maker_name];
 controller_name="collect_uper";
